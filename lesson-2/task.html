@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button class="decre">decre</button>
+    <button class="incre">incre</button>
+    <script>
+      let count = 0;
+      const incBtn = document.querySelector(".incre");
+      const decBtn = document.querySelector(".decre");
+      incBtn.addEventListener("click", () => {
+        count++;
+        document.querySelector("h1").textContent = count;
+      });
+      decBtn.addEventListener("click", () => {
+        if (count <= 0) return;
+
+        count--;
+        document.querySelector("h1").textContent = count;
+      });
+    </script>
+  </body>
+</html>
