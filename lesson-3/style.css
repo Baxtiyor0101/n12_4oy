@@ -1,0 +1,19 @@
+li{
+    width: 300px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+}
+.tables{
+    width: 50%;
+    /* border-collapse: collapse; */
+}
+/* 
+td th table{
+    border: 1px solid black;
+} */
+
+/* td, th,table{
+    border: 1px solid black !important;
+    padding: 10px;
+} */

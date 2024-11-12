@@ -6,10 +6,11 @@
 // click
 // dblclick
 // mouseenter
-// /mouseleave
+// mouseleave
 // mouseover
 // mouseout
 // keydown
+// keyup
 // mousemove
 
 // submit =>form
