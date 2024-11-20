@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced FAQ Page with Location</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .faq-item.active {
+      background-color: #f9f9f9;
+    }
+    .question {
+      cursor: pointer;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .answer {
+      display: none;
+      margin-top: 10px;
+      color: #555;
+    }
+    .answer.visible {
+      display: block;
+    }
+    .favorite-btn {
+      margin-top: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .favorite-btn:hover {
+      background: #218838;
+    }
+    #controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .control-btn {
+      background: #17a2b8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .control-btn:hover {
+      background: #138496;
+    }
+    #visible-count {
+      font-size: 16px;
+      color: #555;
+    }
+    #location-info {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Enhanced FAQ Page with Location</h1>
+  <div id="faq-container">
+    <div class="faq-item">
+      <h3 class="question">What is JavaScript?</h3>
+      <p class="answer">JavaScript is a versatile programming language used for web development, allowing interactive elements on websites.</p>
+      <button class="favorite-btn">Mark as Favorite</button>
+    </div>
+    <div class="faq-item">
+      <h3 class="question">What is Event Bubbling?</h3>
+      <p class="answer">Event bubbling is the process by which an event propagates from the target element to its ancestors.</p>
+      <button class="favorite-btn">Mark as Favorite</button>
+    </div>
+    <div class="faq-item">
+      <h3 class="question">What is Event Delegation?</h3>
+      <p class="answer">Event delegation is a technique where a single event listener is used to manage events for multiple child elements.</p>
+      <button class="favorite-btn">Mark as Favorite</button>
+    </div>
+  </div>
+
+  <div id="controls">
+    <button id="expand-all" class="control-btn">Expand All</button>
+    <button id="collapse-all" class="control-btn">Collapse All</button>
+    <button id="find-location" class="control-btn">Find My Location</button>
+    <span id="visible-count">Visible Answers: 0</span>
+  </div>
+  <div id="location-info"></div>
+
+  <script>
+    const faqContainer = document.getElementById('faq-container');
+    const expandAllBtn = document.getElementById('expand-all');
+    const collapseAllBtn = document.getElementById('collapse-all');
+    const findLocationBtn = document.getElementById('find-location');
+    const visibleCountSpan = document.getElementById('visible-count');
+    const locationInfo = document.getElementById('location-info');
+
+    // Update visible count
+    const updateVisibleCount = () => {
+      const visibleAnswers = document.querySelectorAll('.answer.visible').length;
+      visibleCountSpan.textContent = `Visible Answers: ${visibleAnswers}`;
+    };
+
+    // Event Delegation for FAQ toggling
+    faqContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('question')) {
+        const answer = e.target.nextElementSibling;
+        const parent = e.target.parentElement;
+
+        answer.classList.toggle('visible');
+        parent.classList.toggle('active');
+        updateVisibleCount();
+      }
+    });
+
+    // Stop Propagation on Favorite button
+    faqContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('favorite-btn')) {
+        e.stopPropagation();
+        alert('Marked as Favorite!');
+      }
+    });
+
+    // Expand all answers
+    expandAllBtn.addEventListener('click', () => {
+      document.querySelectorAll('.answer').forEach(answer => {
+        answer.classList.add('visible');
+        answer.parentElement.classList.add('active');
+      });
+      updateVisibleCount();
+    });
+
+    // Collapse all answers
+    collapseAllBtn.addEventListener('click', () => {
+      document.querySelectorAll('.answer').forEach(answer => {
+        answer.classList.remove('visible');
+        answer.parentElement.classList.remove('active');
+      });
+      updateVisibleCount();
+    });
+
+    // Find My Location
+    findLocationBtn.addEventListener('click', () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            locationInfo.textContent = `Latitude: ${latitude.toFixed(6)}, Longitude: ${longitude.toFixed(6)}`;
+          },
+          () => {
+            locationInfo.textContent = 'Unable to retrieve location.';
+          }
+        );
+      } else {
+        locationInfo.textContent = 'Geolocation is not supported by your browser.';
+      }
+    });
+
+    // Initialize visible count
+    updateVisibleCount();
+  </script>
+</body>
+</html>
