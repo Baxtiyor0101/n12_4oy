@@ -1,12 +1,12 @@
-// Promise
-let promise = new Promise((resolved, rejected) => {
-  let a = 33;
-  if (a > 5) {
-    resolved(10);
-  } else {
-    rejected(0);
-  }
-});
+// // Promise
+// let promise = new Promise((resolved, rejected) => {
+//   let a = 33;
+//   if (a > 5) {
+//     resolved(10);
+//   } else {
+//     rejected(0);
+//   }
+// });
 
 // promise
 //   .then((res) => {
@@ -28,23 +28,50 @@ let promise = new Promise((resolved, rejected) => {
 // let pro1 = new Promise((a,b)=>{});
 
 //////////////////////////
-
-promise
-  .then((res) => {
-    let task = res;
-    console.log(res);
-    return task * 12;
-  })
-  .then((res) => {
-    console.log(res);
-  });
+// promise
+//   .then((res) => {
+//     let task = res;
+//     console.log(res);
+//     return task * 12;
+//   })
+//   .then((res) => {
+//     console.log(res);
+//   });
 
 // promisedan qaytgan javob then ichida kelgan callback function da kelgan paramettrda keladi
 
 // promise Methods
 // resolved() => avtamatski resolve boladi
 // rejected() => avtamatski reject boladi
-// all() 
+// all()
 // any()
 // race()
 // allsettled()
+
+// let promise = new Promise((res, rej) => {
+//   if (true) {
+//     let pro = new Promise((res, rej) => {
+//       setTimeout(() => {
+//         res("this is child promise");
+//       }, 2000);
+//     });
+//     res(pro);
+//   } else {
+//     rej("this is not done");
+//   }
+// });
+
+// function test(a) {}
+// test("this is");
+
+// promise
+//   .then((x) => {
+//     console.log(x);
+//     return;
+//   })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
