@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+      .loading {
+        width: 100px;
+        /* display: none; */
+        height: 100px;
+        border-radius: 50%;
+        /* background-color: #f1f1f1; */
+        /* margin: 200px auto; */
+        animation: loadingAnimation 0.5s infinite linear;
+        border: 10px solid #8e7878;
+        border-top: 10px solid rgb(161, 195, 24);
+      }
+
+      @keyframes loadingAnimation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .card {
+        width: 300px;
+        border: 2px solid rgb(201, 40, 40);
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>fetching, async await</h1>
+    <div class="loading"></div>
+    <div class="container"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
