@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "3",
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "password": "123456"
+    },
+    {
+      "id": "4",
+      "name": "Bob Smith",
+      "email": "bob@example.com",
+      "password": "qwerty"
+    },
+    {
+      "id": "b95d",
+      "name": "Samandar",
+      "email": "samandar.get",
+      "password": "12345"
+    },
+    {
+      "id": "ddb1",
+      "name": "Ozodbek",
+      "email": "ozod@gmail.com",
+      "password": "ozodbek06"
+    }
+  ]
+}

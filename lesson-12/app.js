@@ -6,7 +6,7 @@
 //     name: names,
 //     age: age,
 //   };
-// } 
+// }
 
 // let user1 = test("Muhammad", 17);
 // console.log(user1);
@@ -161,3 +161,67 @@
 // // Polimarphism => methids owerwrite qilish
 // )
 // => 90
+
+// Constructor function
+// function Student(ism, city) {
+//   //this = {}
+//   this.name = ism;
+//   // this = {name:Ozodbek}
+//   this.city = city;
+//   // this = {name:Ozodbek, city:qashqadaryo}
+//   // this.sayHi = function () {
+//   //   console.log(`Hello, my name is ${this.name}. I live in ${this.city}`);
+//   // };
+// }
+// Student.prototype.sayHi = function () {
+//   console.log(`Hello, my name is ${this.name}. I live in ${this.city}`);
+// };
+
+// let student1 = new Student("Ozodbek", "Qashqadaryo");
+// let student2 = new Student("Ozodbek", "Qashqadaryo");
+// student1.sayHi();
+// console.log(student1.__proto__ == Student.prototype);
+// console.log(student2);
+
+// function Test(params) {
+//   this.params = params;
+// }
+
+// let test1 = new Test("test");
+// console.log(test1.__proto__ == student1.__proto__);
+
+/////////////////// classes
+class Test {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  sayHi() {
+    console.log(`Hello, my name is ${this.name}. I am ${this.age} years old.`);
+  }
+}
+
+class Test1 extends Test {
+  #balance = 1000;
+  constructor(name, age, emails) {
+    super(name, age);
+    this.emails = emails;
+  }
+  getBalance() {
+    return this.#balance;
+  }
+  get email() {
+    return `${this.emails} is  my email`;
+  }
+  set changeSmth(smth) {
+    // console.log(smth);
+    this.name = smth.split(" ")[0];
+    this.emails = smth.split(" ")[1];
+  }
+}
+
+let test1 = new Test1("Ozodbek", 25, "exampl@dd.com");
+console.log(test1);
+console.log(test1.email);
+test1.changeSmth = "Samandar test@get.com";
+console.log(test1);
